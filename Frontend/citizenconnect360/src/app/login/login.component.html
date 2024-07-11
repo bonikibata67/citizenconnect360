@@ -1,53 +1,27 @@
 
-  <!-- <div class="parent">
-    <div class="wrapper">
-        <div class="form-wrapper sign-in"> 
-            <div class="log">
-            <h2>Login</h2>
-            <p>sign in to your account</p>
-            </div>     
-            
-           <div class="input-group">
-            <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">              
-              <input id="username" formControlName="username" placeholder="username">
-              
-              
-              <input id="password" type="password" formControlName="password" placeholder=" password">
-              
-             
-            </form>
-           </div> 
-            <div class="forgot-pass">
-                <a href="#">Forgot Password?</a>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <div class="sign-link">
-                <p>Don't have an account? <a href="#" class="signUp-link">Sign Up</a></p>
-            </div>       
-    </div>  
-  
-    </div>
-    </div> -->
+<p *ngIf="message">{{message}}</p>
+<p *ngIf="error">{{error}}</p>
 
-<!-- [formGroup]="LoginForm" (ngSubmit)="onSubmit()" -->
 <div class="parent">
     <div class="form-wrapper sign-in">
         <form action="" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
             <h2>Login</h2>
             <div class="input-group">
-                <input type="text" required>
+                <input type="text" formControlName="username" required >
                 <label for="">Username</label>
             </div>
             <div class="input-group">
-                <input type="password" required>
+                <input type="password" formControlName="password" required>
                 <label for="">Password</label>
             </div>
             <!-- <div class="forgot-pass">
                 <a href="#">Forgot Password?</a>
             </div> -->
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" [disabled]="LoginForm.invalid" class="btn">Login</button>
             <div class="sign-link">
-                <p>Don't have an account? <a href="#" class="signUp-link">Sign Up</a></p>
+                <p>Don't have an account? <a routerLink="/signup" class="signUp-link">Sign Up</a> </p>
             </div>
         </form> 
 </div>
+<!-- <a routerLink="/signup" routerLinkActive="active" *ngIf="!authService.isLoggedIn()">Sign up</a> -->
+<!-- <a href="#" class="signUp-link">Sign Up</a> -->

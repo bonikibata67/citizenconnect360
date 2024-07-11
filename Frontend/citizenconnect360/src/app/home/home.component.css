@@ -1,0 +1,36 @@
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust height based on your design */
+    background-color: #CCE6F4; /* Light blue background color */
+    color: #333; /* Text color */
+    padding: 20px;
+}
+
+.background-image {
+    /* Style for background image of Nairobi city */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8vR2NAaGV79H1Z-2A9VWqM0l3gCQ_nft7Qg&s');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%; /* Adjust height based on your design */
+    margin-bottom: 20px;
+}
+
+.content-wrapper {
+    text-align: center;
+    width: 50%;
+    height: 40%;
+}
+
+h1 {
+    font-size: 2.5rem; /* Adjust font size */
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem; /* Adjust font size */
+    line-height: 1.6;
+}

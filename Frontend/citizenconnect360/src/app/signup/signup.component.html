@@ -1,25 +1,26 @@
+<p *ngIf="message">{{message}}</p>
+<p *ngIf="error">{{error}}</p>
 <div class="parent">
     <div class="form-wrapper sign-up">
-        <form action="">
-            <h2>Sign Up</h2>
-            <div class="input-group">
-                <input type="text" required>
-                <label for="">Username</label>
-            </div>
-            <div class="input-group">
-                <input type="email" required>
-                <label for="">Email</label>
-            </div>
-            <div class="input-group">
-                <input type="password" required>
-                <label for="">Password</label>
-            </div>
-            <button type="submit" class="btn">Sign Up</button>
-            <div class="sign-link">
-                <p>Already have an account? <a href="./login" class="signIn-link">Log In</a></p>
-            </div>
-        </form>
+      <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+          <input type="text" formControlName="username" required>
+          <label for="username">Username</label>
+        </div>
+        <div class="input-group">
+          <input type="email" formControlName="Email" required>
+          <label for="email">Email</label>
+        </div>
+        <div class="input-group">
+          <input type="password" formControlName="password" required>
+          <label for="password">Password</label>
+        </div>
+        <button type="submit" [disabled]="SignUpForm.invalid" class="btn">Sign Up</button>
+        <div class="sign-link">
+          <p>Already have an account? <a routerLink="/login" class="signIn-link">Log In</a></p>
+        </div>
+      </form>
     </div>
-    
-
-</div>
+  </div>
+  

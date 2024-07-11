@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule,Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { RouterModule } from '@angular/router';
@@ -19,12 +19,18 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./login.component.scss'],
   imports: [ReactiveFormsModule, RouterModule, CommonModule]
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnDestroy, OnInit{
  
   LoginForm!:FormGroup
+  error!:string
+  message!:string
+
 
  
-  constructor(private fb: FormBuilder, private router:Router, private store:Store <AppState>) {}
+  constructor(private authservice:AuthService, private fb: FormBuilder, private router:Router, private store:Store <AppState>) {}
+  ngOnDestroy(): void {
+    
+  }
   ngOnInit(): void {
     this.LoginForm= this.fb.group ({
       username:this.fb.control(null, Validators.required),
@@ -33,10 +39,29 @@ export class LoginComponent implements OnInit{
     
   }
   error$=this.store.select(errorSelector)
-  onSubmit() {
+  onSubmit() {     
+  this.store.dispatch(authactions.login({user:this.LoginForm.value}));
+  
+
+    this.authservice.loginUsers(this.LoginForm.value).subscribe(
+      res => {
+        localStorage.setItem('token', res.token);
+        this.message = res.message;
+        if (res.token) {
+          this.router.navigate(['/home']);
+        }
+      },
+      (err: { error: { message: any } }) => {
+        console.log(err);
+        this.error = err.error.message;
+      }
+    );
+
+
+
+      
+      
      
-      this.store.dispatch(authactions.login({user:this.LoginForm.value}));
    
-}
-}
+}}
 
