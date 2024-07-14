@@ -1,1 +1,15 @@
-<p>incidents works!</p>
+<div class="main-container">
+    <div class="header-box">
+      <h1>VIEW INCIDENTS</h1>
+    </div>
+    <div class="incidents-container">
+      <div *ngFor="let incident of incidents" class="incident-box">
+        <img [src]="incident.imageUrl" alt="Incident Image" class="incident-image">
+        <div class="incident-details">
+          <p><strong>Incident Title:</strong> {{ incident.title }}</p>
+          <p><strong>Incident Description:</strong> {{ incident.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

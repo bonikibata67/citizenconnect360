@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import routes from './app.routes';
 
 @Component({
@@ -11,6 +9,6 @@ import routes from './app.routes';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterModule, HeaderComponent, LoginComponent,SignupComponent, HomeComponent]
+  imports: [RouterModule, HeaderComponent ]
 })
 export class AppComponent {}

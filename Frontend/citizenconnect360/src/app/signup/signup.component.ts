@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AppState } from '../state';
-import { authactions } from '../state/actions/auth.actions';
+// import { AppState } from '../state';
+// import { authactions } from '../state/actions/auth.actions';
 import { errorSelector } from '../state/selectors/auth.selector';
 import { AuthService } from '../services/auth.service';
 import { Observable, Subscription } from 'rxjs';
@@ -17,44 +17,69 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
-export class SignupComponent implements OnDestroy, OnInit{
- 
-  SignUpForm!:FormGroup
-  error!:string
-  message!:string
+export class SignupComponent implements OnInit{
+  SignUpForm!: FormGroup;
+  error!: string;
+  message!: string;
 
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
- 
-  constructor(private authservice:AuthService, private fb: FormBuilder, private router:Router, private store:Store <AppState>) {}
-  ngOnDestroy(): void {
-    
-  }
   ngOnInit(): void {
-    this.SignUpForm= this.fb.group ({
-      username:this.fb.control(null, Validators.required),
-      Email:this.fb.control(null, Validators.required),
-      password: this.fb.control(null, Validators.required),
+    this.SignUpForm = this.fb.group({
+      username: [null, [Validators.required, Validators.minLength(3)]],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)]],
+      role: ['citizen', Validators.required]
     });
-    
   }
-  error$=this.store.select(errorSelector)
-  onSubmit() {     
-  this.store.dispatch(authactions.register({user:this.SignUpForm.value}));
-  
 
-    this.authservice.registerUser(this.SignUpForm.value).subscribe(
-      res => {
-        localStorage.setItem('token', res.token);
-        this.message = res.message;
-        if (res.token) {
-          this.router.navigate(['/home']);
+  onSubmit() {
+    if (this.SignUpForm.valid) {
+      this.authService.registerUser(this.SignUpForm.value).subscribe(
+        res => {
+          if (res.token) {
+            // Navigate based on user role
+            if (this.authService.isAdmin()) {
+              this.router.navigate(['/admin-dashboard']);
+            } else if (this.authService.isGovernment()) {
+              this.router.navigate(['/government-dashboard']);
+            } else {
+              this.router.navigate(['/home']);
+            }
+          }
+        },
+        err => {
+          this.error = err?.error?.message || 'Registration failed';
         }
-      },
-      (err: { error: { message: any } }) => {
-        console.log(err);
-        this.error = err.error.message;
-      }
-    );
-}}
+      );
+    }
+  }
+ 
+  
+  // SignUpForm!: FormGroup;
+  // error!: string;
+  // message!: string;
+
+  // constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private store: Store<AppState>) {}
+
+  // ngOnDestroy(): void {}
+
+  // ngOnInit(): void {
+  //   this.SignUpForm = this.fb.group({
+  //     username: [null, [Validators.required, Validators.minLength(3)]],
+  //     email: [null, [Validators.required, Validators.email]],
+  //     password: [null, [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)]], // Minimum six characters, at least one letter and one number
+  //     role: ['citizen', Validators.required] // Default role is citizen
+  //   });
+  // }
+
+  // error$ = this.store.select(errorSelector);
+
+  // onSubmit() {
+  //   if (this.SignUpForm.valid) {
+  //     this.store.dispatch(authactions.register({ user: this.SignUpForm.value }));
+  //   }
+  // }
+};
 
 
