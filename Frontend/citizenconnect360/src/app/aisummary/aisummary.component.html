@@ -1,0 +1,17 @@
+<div class="aisummary-page">
+    <div class="header">
+      <h1>AI Incident Summaries</h1>
+    </div>
+    
+    <div class="content">
+      <div *ngFor="let incident of incidents" class="incident">
+        <h2>{{ incident.title }}</h2>
+        <p>{{ incident.description }}</p>
+        <div class="summary">
+          <h3>AI Summary</h3>
+          <p>{{ incident.aiSummary }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

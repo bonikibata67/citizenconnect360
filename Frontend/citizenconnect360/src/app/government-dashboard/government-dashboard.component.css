@@ -1,0 +1,47 @@
+/* government-dashboard.component.css */
+
+/* Base styles */
+.government-dashboard {
+    background-color: rgba(54, 245, 54, 0.2); /* Light green background with 20% opacity */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .content {
+    background-color: #cce6f4; /* Light blue background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  .content h1 {
+    margin-bottom: 20px;
+  }
+  
+  .content p {
+    line-height: 1.6;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .content {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .content {
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .content {
+      max-width: 90%;
+    }
+  }
+  

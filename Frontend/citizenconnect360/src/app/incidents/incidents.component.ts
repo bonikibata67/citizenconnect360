@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Incident } from '../models/incedence';
 import { CommonModule } from '@angular/common';
 import { IncidentService } from '../services/incident.service';
@@ -15,26 +15,26 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 // export class IncidentsComponent {
 
 // }
-export class IncidentsComponent {
-  // incidents: Incident[] = [
-  //   {
-  //     title: 'Lorem Ipsum Incident',
-  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  //     imageUrl: 'https://via.placeholder.com/150' // Placeholder image URL
-  //   },
-  //   {
-  //     title: 'Another Incident',
-  //     description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-  //     imageUrl: 'https://via.placeholder.com/150' // Placeholder image URL
-  //   }
-  // ];
-
-
-  incidents: any[] = [];
+export class IncidentsComponent  implements OnInit {
+  incidents: Incident[] = [ 
+    {
+    title: 'Lorem Ipsum Incident',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    imageUrl: 'https://via.placeholder.com/150'
+  },
+  {
+    title: 'Another Incident',
+    description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.',
+    imageUrl: 'https://via.placeholder.com/150'
+  }];
 
   constructor(private incidentService: IncidentService) {}
 
   ngOnInit(): void {
+    this.fetchIncidents();
+  }
+
+  fetchIncidents(): void {
     this.incidentService.getIncidents().subscribe(incidents => {
       this.incidents = incidents;
     });

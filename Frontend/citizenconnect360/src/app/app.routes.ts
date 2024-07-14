@@ -15,6 +15,8 @@ import { OfficialComponent } from './official/official.component';
 import { AdminGuard } from './guard/admin.guard';
 import { GovernmentGuard } from './guard/government.guard';
 import { CitizenGuard } from './guard/citizen.guard';
+import { CreatepollComponent } from './createpoll/createpoll.component';
+import { AisummaryComimplements } from './aisummary/aisummary.component';
 
 
 
@@ -27,11 +29,13 @@ const routes: Routes = [
   {path: 'signup',component:SignupComponent},
   { path: 'views', component: ViewsComponent},
   { path: 'polls', component: PollsComponent},  
-  { path: 'ReportIncident', component: ReportIncidentComponent, canActivate: [CitizenGuard]},  
-  { path: 'educate', component: EducateComponent, canActivate: [CitizenGuard]},  
+  { path: 'ReportIncident', component: ReportIncidentComponent, },  
+  { path: 'educate', component: EducateComponent},  
   { path: 'incidents', component: IncidentsComponent, },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard] },
-  { path: 'government-dashboard', component: GovernmentDashboardComponent, canActivate: [GovernmentGuard] },
+  { path: 'government-dashboard', component: GovernmentDashboardComponent,canActivate: [GovernmentGuard]},
+  { path: 'createpoll', component: CreatepollComponent, canActivate: [GovernmentGuard] },
+  { path: 'Aisummary', component: AisummaryComimplements, canActivate: [GovernmentGuard] },
   { path: '**', redirectTo: 'login' }
   // { path: 'government-dashboard', component: GovernmentDashboardComponent, },
   // { path: 'admin-dashboard', component: AdminDashboardComponent, },

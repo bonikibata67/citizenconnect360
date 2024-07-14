@@ -1,69 +1,102 @@
-/* admin-dashboard.component.css */
 .admin-dashboard {
-    background-color: rgba(54, 245, 54, 0.2); /* Light green background with 20% opacity */
-    padding: 20px;
+  background-color: rgba(54, 245, 54, 0.2); /* Light green background with 20% opacity */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manage-section {
+  width: 70%; /* Reduce width to 70% */
+  margin: 0 auto; /* Center align the manage section */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-direction: column;
+  background-color: #cce6f4; /* Light blue background */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.header {
+  width: 100%; /* Headers cover the entire width of manage-section */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  width: 100%; /* Headers cover the entire width of manage-section */
+  background-color: #bbadff; /* Light purple background */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.manage-users, .manage-roles {
+  flex: 1;
+  min-width: 300px;
+}
+
+h3 {
+  background-color: #bbadff; /* Light purple background */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user-inputs {
+  margin-bottom: 20px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-row label {
+  margin-right: 10px;
+}
+
+.user-details, .user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user {
+  flex-basis: calc(50% - 10px);
+  background-color: #cce6f4; /* Light blue background */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions .approve {
+  background-color: rgba(54, 245, 54, 0.4); /* Green background with 40% opacity */
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions .reject {
+  background-color: #bbadff; /* Light gray background */
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .manage-section {
+    width: 100%; /* Full width on smaller screens */
   }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
+
+  .user {
+    flex-basis: 100%;
   }
-  
-  .header h2 {
-    background-color: #bbadff; /* Light purple background */
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .manage-users, .manage-roles {
-    margin-top: 20px;
-  }
-  
-  .user-inputs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .user-inputs input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .user-inputs button {
-    padding: 10px;
-    background-color: #bbadff; /* Light purple background */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .user-details {
-    background-color: #cce6f4; /* Light blue background */
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .actions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .actions .approve {
-    background-color: rgba(54, 245, 54, 0.4); /* Green background with 40% opacity */
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .actions .reject {
-    background-color: #ccccce; /* Light gray background */
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+}

@@ -1,11 +1,64 @@
-<!-- admin-dashboard.component.html -->
 <div class="admin-dashboard">
-    <div class="header">
-      <h2>Manage Users</h2>
-      <h2>Manage Roles</h2>
+  <div class="manage-section">
+    <!-- Manage Users Section -->
+    <div class="manage-users">
+      <div class="header">
+        <h2>Manage Users</h2>
+      </div>
+      <div class="user-inputs">
+        <div class="input-row">
+          <label for="username">Username:</label>
+          <input type="text" id="username" placeholder="Enter username" [(ngModel)]="usernameToDelete">
+        </div>
+        <div class="input-row">
+          <label for="email">Email:</label>
+          <input type="text" id="email" placeholder="Enter email" [(ngModel)]="emailToDelete">
+        </div>
+        <div class="input-row">
+          <label for="role">Role:</label>
+          <input type="text" id="role" placeholder="Enter role" [(ngModel)]="roleToDelete">
+        </div>
+        <button (click)="deleteUser()">Delete User</button>
+      </div>
+      <div *ngFor="let user of users" class="user-details">
+        <p>ID: {{ user.id }}</p>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Role: {{ user.role }}</p>
+      </div>
     </div>
+
+    <!-- Manage Roles Section -->
+    <div class="manage-roles">
+      <div class="header">
+        <h2>Manage Roles</h2>
+      </div>
+      <div class="user-list">
+        <div *ngFor="let user of users" class="user-details">
+          <p><strong>User ID:</strong> {{ user.id }}</p>
+          <p><strong>Username:</strong> {{ user.username }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Current Role:</strong> {{ user.role }}</p>
+          <p><strong>Requested Role:</strong> </p>
+          <div class="actions">
+            <button class="approve">Approve</button>
+            <button class="reject">Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- admin-dashboard.component.html
+<div class="admin-dashboard">
+   
   
     <div class="manage-users">
+      <div class="header">
+        <h2>Manage Users</h2>      
+      </div>
       <div class="user-inputs">
         <input type="text" placeholder="Username" [(ngModel)]="usernameToDelete">
         <input type="text" placeholder="Email" [(ngModel)]="emailToDelete">
@@ -21,6 +74,9 @@
     </div>
   
     <div class="manage-roles">
+      <div class="header">
+        <h2>Manage Roles</h2>
+      </div>
       <div *ngFor="let user of users" class="user-details">
         <p>ID: {{ user.id }}</p>
         <p>Username: {{ user.username }}</p>
@@ -34,4 +90,4 @@
       </div>
     </div>
   </div>
-  
+   -->

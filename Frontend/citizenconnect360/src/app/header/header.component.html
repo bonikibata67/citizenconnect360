@@ -10,6 +10,8 @@
             <a routerLink="/incidents" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Incidents</a>
             <a routerLink="/ReportIncident" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ReportIncident</a>
             <a routerLink="/polls" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Polls</a>
+            <a routerLink="/createpoll" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Createpoll</a>
+            <a routerLink="/Aisummary" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Aisummary</a>
             <a routerLink="/login" routerLinkActive="active" *ngIf="!authService.isLoggedIn()">Login</a>
             <a routerLink="/signup" routerLinkActive="active" *ngIf="!authService.isLoggedIn()">Register</a>
             <a href="#" (click)="logout()" *ngIf="authService.isLoggedIn()">Logout</a>

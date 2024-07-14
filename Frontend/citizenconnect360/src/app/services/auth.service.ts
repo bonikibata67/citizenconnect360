@@ -18,6 +18,7 @@ export class AuthService {
         { id:1, username: 'citizen1', email: 'citizen@gmail.com', role: 'citizen', password: 'citizen123' },
         { id:2, username: 'government1', email: 'official@gmail.com',role: 'government', password: 'government123' },
         { id:3, username: 'admin1', email: 'admin@gmail.com', role: 'admin', password: 'admin123' },
+        { id:4, username: 'Qwerty', email: 'Qwerty@gmail.com', role: 'citizen', password: 'Qwerty123' },
       
   ];
   private loggedInUser: User | null = null;
