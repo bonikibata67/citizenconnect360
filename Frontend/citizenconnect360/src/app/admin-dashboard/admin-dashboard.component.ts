@@ -34,4 +34,5 @@ export class AdminDashboardComponent implements OnInit{
       alert('User not found or invalid details provided.');
     }
   }
+
 }

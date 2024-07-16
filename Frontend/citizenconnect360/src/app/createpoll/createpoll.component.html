@@ -1,4 +1,35 @@
-<div class="main-container">
+<div class="createpoll">
+  <div class="header">
+    <h2>Create Poll</h2>
+  </div>
+  <div class="content">
+    <!-- Your content here -->
+    <form>
+      <div class="input-row">
+        <label for="pollTitle">Poll Title:</label>
+        <input type="text" id="pollTitle" name="pollTitle" placeholder="Enter poll title">
+      </div>
+      <div class="input-row">
+        <label for="pollDescription">Poll Description:</label>
+        <textarea id="pollDescription" name="pollDescription" placeholder="Enter poll description"></textarea>
+      </div>
+      <div formArrayName="options">
+        <div *ngFor="let option of options.controls; let i = index" [formGroupName]="i">
+          <label for="label">Option Label:</label>
+          <input type="text" id="label" formControlName="label">
+          <button type="button" (click)="removeOption(i)">Remove Option</button>
+        </div>
+      </div>
+      <div class="btn">
+      <button type="button" (click)="addOption()">Add Option</button>
+      <button type="submit">Create Poll</button>
+      </div>
+  
+      
+    </form>
+  </div>
+</div>
+<!-- <div class="main-container">
     <div class="header-box">
       <h1>CREATE A POLL</h1>
     </div>
@@ -21,7 +52,7 @@
       <button type="submit">Create Poll</button>
     </form>
   </div>
-  
+   -->
 
 <!-- <form [formGroup]="pollForm" (ngSubmit)="addPoll()">
     <label for="title">Title:</label>

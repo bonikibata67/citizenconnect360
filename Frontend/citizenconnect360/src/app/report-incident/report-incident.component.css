@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* height: 100vh; */
+    /* justify-content: center; */
+    justify-content: space-between;
+    height: 100vh;
     background-color:  rgba(54, 245, 54, 0.1);; /* 36F536 20% opacity */
     /* padding: 20px; */
     /* margin-top: -29; */
@@ -13,11 +14,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #CCE6F4; /* Light blue background color */
-    padding: 10px; /* Reduced padding for better fit */
+    /* padding: 5px; Reduced padding for better fit */
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
+    height: 70%;
     max-width: 800px;
     /* height: 100vh; Retaining height at 20% */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */

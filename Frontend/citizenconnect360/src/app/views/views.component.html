@@ -1,4 +1,6 @@
 <div class="main-container">
+    
+
   <div class="views-box" *ngFor="let view of views">
       <div class="user-info">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWwfGUCDwrZZK12xVpCOqngxSpn0BDpq6ewQ&s" alt="User A" class="profile-picture">
@@ -13,8 +15,9 @@
       </div>
   </div>
   <div class="input-container">
-      <label for="view-input">Type your view:</label>
-      <input type="text" id="view-input" class="view-input" [(ngModel)]="newView">
-      <button class="submit-button" (click)="addView()">Submit</button>
-  </div>
+    <label for="view-input">Type your view:</label>
+    <input type="text" id="view-input" class="view-input" [(ngModel)]="newView">
+    <button class="submit-button" (click)="addView()">Submit</button>
+</div>
+  
 </div>

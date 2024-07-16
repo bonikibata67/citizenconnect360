@@ -1,49 +1,57 @@
 .admin-dashboard {
-  background-color: rgba(54, 245, 54, 0.2); /* Light green background with 20% opacity */
-  padding: 20px;
+  background-color: rgba(54, 245, 54, 0.2);
+  /* padding: 20px; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.manage-section {
-  width: 70%; /* Reduce width to 70% */
-  margin: 0 auto; /* Center align the manage section */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  flex-direction: column;
-  background-color: #cce6f4; /* Light blue background */
-  padding: 20px;
-  border-radius: 10px;
+  height: 100vh;
+  /* gap: 5px; */
+  /* padding: 5px; */
 }
 
 .header {
-  width: 100%; /* Headers cover the entire width of manage-section */
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .header h2 {
-  width: 100%; /* Headers cover the entire width of manage-section */
-  background-color: #bbadff; /* Light purple background */
+  width: 100%;
+  background-color: #bbadff;
   padding: 10px;
   border-radius: 5px;
+  margin: 0;
 }
 
-.manage-users, .manage-roles {
-  flex: 1;
-  min-width: 300px;
+.manage-users {
+  width: 70%;
+  gap: 10px;
+  background-color: #cce6f4;
+  /* padding: 20px; */
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
+.manage-roles{
+  width: 70%;
+  gap: 10px;
+  background-color: #cce6f4;
+  /* padding: 20px; */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* margin-bottom: 20px; */
 
-h3 {
-  background-color: #bbadff; /* Light purple background */
-  padding: 10px;
-  border-radius: 5px;
 }
-
+.grid{
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
 .user-inputs {
+  width: 100%;
   margin-bottom: 20px;
 }
 
@@ -55,28 +63,52 @@ h3 {
 
 .input-row label {
   margin-right: 10px;
+  width: 20%;
 }
 
-.user-details, .user-list {
+.input-row input {
+  width: 60%;
+}
+
+button {
+  background-color: #bbadff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.user-list {
+  display: grid;
+  gap: 20px;
+}
+
+.user-details {
+  background-color: #BBADFF;
+  padding: 10px;
+  border-radius: 5px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
 }
 
 .user {
-  flex-basis: calc(50% - 10px);
-  background-color: #cce6f4; /* Light blue background */
-  padding: 10px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .actions {
   display: flex;
+  /* justify-content: flex-end; */
   gap: 10px;
 }
 
 .actions .approve {
-  background-color: rgba(54, 245, 54, 0.4); /* Green background with 40% opacity */
+  background-color: rgba(54, 245, 54, 0.4);
   padding: 5px;
   border: none;
   border-radius: 5px;
@@ -84,7 +116,7 @@ h3 {
 }
 
 .actions .reject {
-  background-color: #bbadff; /* Light gray background */
+  background-color: #cce6f4;
   padding: 5px;
   border: none;
   border-radius: 5px;
@@ -92,11 +124,7 @@ h3 {
 }
 
 @media (max-width: 768px) {
-  .manage-section {
-    width: 100%; /* Full width on smaller screens */
-  }
-
-  .user {
-    flex-basis: 100%;
+  .manage-users, .manage-roles {
+    width: 100%;
   }
 }

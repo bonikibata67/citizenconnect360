@@ -1,47 +1,62 @@
-/* government-dashboard.component.css */
-
 /* Base styles */
 .government-dashboard {
-    background-color: rgba(54, 245, 54, 0.2); /* Light green background with 20% opacity */
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 85vh; Full viewport height */
+  position: relative; /* Ensure relative positioning for children */
+  height: 100vh;
+  background-color: rgba(54, 245, 54, 0.1);
+}
+
+.background-image {
+  margin-left: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjxWpHjCbrLO9F6jDFMKvPGQ3VyAMPG2ofXQ&s');
+  background-size: cover;
+  background-position: center;
+  /* filter: blur(1px); Optional: add a slight blur effect for better readability of content */
+  z-index: -1;
+  opacity: 2;  
+}
+
+.content {
+  background-color: #CCE6F4; /* Semi-transparent white background for content */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  text-align: center;
+  position: relative; /* Ensure content stays above the background image */
+  z-index: 1; /* Ensure content is above background */
+}
+
+.content h1 {
+  margin-bottom: 20px;
+}
+
+.content p {
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
   .content {
-    background-color: #cce6f4; /* Light blue background */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 800px;
-    text-align: center;
+    padding: 15px;
   }
-  
-  .content h1 {
-    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
   }
-  
-  .content p {
-    line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .content {
+    max-width: 90%;
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1024px) {
-    .content {
-      padding: 15px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .content {
-      padding: 10px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .content {
-      max-width: 90%;
-    }
-  }
-  
+}
