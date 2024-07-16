@@ -49,11 +49,11 @@
   
   .login-button {
     background-color: rgba(54, 245, 54, 0.5); /* Light green with 50% opacity */
-    color: white;
+    color: black;
   }
   
   .register-button {
-    background-color: #BBADFF; /* Light blue */
+    background-color:rgba(54, 245, 54, 0.5); /* Light blue */
     color: black;
   }
   

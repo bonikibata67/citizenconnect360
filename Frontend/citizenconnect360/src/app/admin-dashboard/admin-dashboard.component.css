@@ -1,13 +1,11 @@
+/* Base styles */
 .admin-dashboard {
   background-color: rgba(54, 245, 54, 0.2);
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   height: 100vh;
-  /* gap: 5px; */
-  /* padding: 5px; */
 }
 
 .header {
@@ -24,32 +22,24 @@
   margin: 0;
 }
 
-.manage-users {
+.manage-users, .manage-roles {
   width: 70%;
   gap: 10px;
   background-color: #cce6f4;
-  /* padding: 20px; */
   border-radius: 10px;
   margin-bottom: 20px;
-}
-.manage-roles{
-  width: 70%;
-  gap: 10px;
-  background-color: #cce6f4;
-  /* padding: 20px; */
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  /* margin-bottom: 20px; */
-
 }
-.grid{
-  display: flex;
-  gap: 10px;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   width: 100%;
 }
+
 .user-inputs {
   width: 100%;
   margin-bottom: 20px;
@@ -82,17 +72,17 @@ button {
 .user-list {
   display: grid;
   gap: 20px;
+  width: 100%;
 }
 
 .user-details {
-  background-color: #BBADFF;
+  background-color: #bbadff;
   padding: 10px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
 }
 
 .user {
@@ -103,7 +93,6 @@ button {
 
 .actions {
   display: flex;
-  /* justify-content: flex-end; */
   gap: 10px;
 }
 
@@ -123,8 +112,67 @@ button {
   cursor: pointer;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .manage-users, .manage-roles {
+    width: 85%;
+  }
+}
+
 @media (max-width: 768px) {
   .manage-users, .manage-roles {
     width: 100%;
+  }
+
+  .input-row label, .input-row input {
+    width: 100%;
+  }
+
+  .input-row label {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-details {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .header h2 {
+    font-size: 1.2em;
+    padding: 8px;
+  }
+
+  .manage-users, .manage-roles {
+    width: 100%;
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions .approve, .actions .reject {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
