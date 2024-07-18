@@ -1,0 +1,11 @@
+USE CITIZENCONNECT;
+GO
+
+CREATE OR ALTER PROCEDURE GetUserById(
+    @Id INT
+)
+AS
+BEGIN
+    SELECT * FROM Users WHERE Id = @Id AND isDeleted = 0;
+END;
+

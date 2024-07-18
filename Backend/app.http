@@ -1,0 +1,102 @@
+POST  http://localhost:4000/auth/register
+Content-Type: application/json
+
+{
+    "Username":"Bonnie",
+    "Email":"bkk78@gmail.com",
+    "Password":"oBonk1@."
+}
+
+
+
+######
+GET http://localhost:4000/tour
+
+
+#####
+GET http://localhost:4000/tour/1d/1
+
+######
+
+POST http://localhost:4000/tour
+
+Content-Type: application/json
+
+{    
+    "image":"https://cloudfront.safaribookings.com/lib/tanzania/tour/480x240/Kizimkazi_001.jpg",
+    "name":"Lamu Island" ,
+    "destination":"Lamu",
+    "description": "Lamu Island, which is also a UNESCO World Heritage site",
+    "price": "$4675"
+}
+
+
+
+######
+DELETE http://localhost:4000/tour/id
+
+
+######
+GET http://localhost:4000/hotels
+
+
+#####
+POST http://localhost:4000/hotels
+
+Content-Type: application/json
+
+{
+    "image":"https://cloudfront.safaribookings.com/accommodations/photos/thumbs/2814_16125480606712_red1.jpg",
+    "name": "Red Elephant Safari Lodge",
+    "location":"Tsavo",
+    "description":"Lamu Island, which is also a UNESCO World Heritage site",
+    "price": "$2345"
+}
+
+
+######
+GET http://localhost:4000/hotel/id
+
+
+
+#######
+DELETE http://localhost:4000/hotel/id
+
+######
+GET http://localhost:4000/Bookings
+
+#####
+POST http://localhost:4000/Booking
+
+Content-Type: application/json
+
+{
+    "username":"Gaiman9Shadow",
+    "tour":"Masai Mara",
+    "hotel":"Safari camp",
+    "bookingDate":"13-02-2024",
+}
+
+######
+GET http://localhost:4000/Booking/Booking/id/632180cd-e88a-4e46-b3fb-dc843cbad09b
+
+######
+DELETE http://localhost:4000/Booking/localhost:4000/Booking/id/632180cd-e88a-4e46-b3fb-dc843cbad09b
+
+######3
+
+
+
+
+#####
+
+POST  http://localhost:4000/auth/login
+Content-Type: application/json
+
+{
+    "Email":"bkk78@gmail.com",
+    "Password":"oBonk1@."
+}
+
+
+
