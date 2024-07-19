@@ -1,11 +1,11 @@
-USE CITIZENCONNECT;
-GO
-
-CREATE OR ALTER PROCEDURE GetUserById(
-    @Id INT
-)
+CREATE PROCEDURE GetUser
+    @Username VARCHAR(255)
 AS
 BEGIN
-    SELECT * FROM Users WHERE Id = @Id AND isDeleted = 0;
-END;
+    SET NOCOUNT ON;
 
+    SELECT *
+    FROM Users
+    WHERE Username = @Username AND isDeleted = 0;
+END;
+GO

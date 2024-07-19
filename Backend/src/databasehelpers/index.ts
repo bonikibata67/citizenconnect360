@@ -27,7 +27,31 @@ export class DbHelper{
         return results
     }
 
-    async query(queryString:string){
+    async query(queryString: string, p0: { Username: any; }){
         return (await ((await this.pool).request().query(queryString)))
     }
+
+    async getUser(username: string) {
+        try {
+            const result = await this.exec('GetUser', { Username: username });
+            return result.recordset[0]; // Assuming only one user is returned based on username
+        } catch (error) {
+            throw error;
+        }
+    }
+    async getViews() {
+        return this.exec('GetViews', {});
+    }
+
+    async addView(username: string, location: string, role: string, viewText: string) {
+        const data = {
+            Username: username,
+            Location: location,
+            Role: role,
+            ViewText: viewText
+        };
+        return this.exec('AddView', data);
+    }
+
+    
 }

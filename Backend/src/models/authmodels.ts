@@ -5,7 +5,8 @@ export interface User{
     Password:string
     isDeleted:number
     isEmailSent:number
-    Role:string
+    RoleID: number;
+    // Role:string
 }
 
 

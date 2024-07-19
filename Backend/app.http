@@ -1,15 +1,62 @@
-POST  http://localhost:4000/auth/register
+POST http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "Username":"Bonnie",
-    "Email":"bkk78@gmail.com",
-    "Password":"oBonk1@."
+    "Username": "official1",
+    "Email": "official@gmail.com",
+    "Password": "official123",
+    "RoleID": 2
+}
+
+######
+#####
+
+POST  http://localhost:4000/auth/login
+Content-Type: application/json
+
+{
+    "Username": "official1",
+    "Password":"official123"
+}
+
+
+#####
+GET http://localhost:4000/auth/id/92baf10f-6438-478f-9784-e0022cbba0a6
+
+
+
+#######
+POST http://localhost:4000/views
+
+Content-Type: application/json
+
+# {   "Username":"citizen1",
+#     "Location":"Nyeri, kenya",
+#     "Role":"citizen",
+#     "ViewText":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."    
+# }
+
+{
+  "Username": "testuser",
+  "Location": "Nairobi, Kenya",
+  "Role": "citizen",
+  "ViewText": "This is a test view."
 }
 
 
 
-######
+
+
+
+
+
+
+
+
+
+
+
+
 GET http://localhost:4000/tour
 
 
@@ -87,16 +134,6 @@ DELETE http://localhost:4000/Booking/localhost:4000/Booking/id/632180cd-e88a-4e4
 
 
 
-
-#####
-
-POST  http://localhost:4000/auth/login
-Content-Type: application/json
-
-{
-    "Email":"bkk78@gmail.com",
-    "Password":"oBonk1@."
-}
 
 
 
