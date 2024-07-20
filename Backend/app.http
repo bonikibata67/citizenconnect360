@@ -15,13 +15,17 @@ POST  http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
-    "Username": "official1",
-    "Password":"official123"
+    "Username": "citizen1",
+    "Password":"citizen123"
 }
 
 
-#####
-GET http://localhost:4000/auth/id/92baf10f-6438-478f-9784-e0022cbba0a6
+########
+GET http://localhost:4000/auth/citizen1
+
+
+######
+GET http://localhost:4000/views
 
 
 
@@ -29,108 +33,77 @@ GET http://localhost:4000/auth/id/92baf10f-6438-478f-9784-e0022cbba0a6
 POST http://localhost:4000/views
 
 Content-Type: application/json
-
-# {   "Username":"citizen1",
-#     "Location":"Nyeri, kenya",
-#     "Role":"citizen",
-#     "ViewText":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."    
-# }
-
 {
-  "Username": "testuser",
-  "Location": "Nairobi, Kenya",
-  "Role": "citizen",
-  "ViewText": "This is a test view."
+  "Username": "citizen1",
+  "Location": "Nyeri, Kenya",
+  "Role": "Citizen",
+  "ViewText": "This is a sample view."
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-GET http://localhost:4000/tour
-
-
-#####
-GET http://localhost:4000/tour/1d/1
-
-######
-
-POST http://localhost:4000/tour
-
-Content-Type: application/json
-
-{    
-    "image":"https://cloudfront.safaribookings.com/lib/tanzania/tour/480x240/Kizimkazi_001.jpg",
-    "name":"Lamu Island" ,
-    "destination":"Lamu",
-    "description": "Lamu Island, which is also a UNESCO World Heritage site",
-    "price": "$4675"
-}
+  
 
 
 
 ######
-DELETE http://localhost:4000/tour/id
-
-
-######
-GET http://localhost:4000/hotels
-
-
-#####
-POST http://localhost:4000/hotels
+POST http://localhost:4000/incidents
 
 Content-Type: application/json
 
 {
-    "image":"https://cloudfront.safaribookings.com/accommodations/photos/thumbs/2814_16125480606712_red1.jpg",
-    "name": "Red Elephant Safari Lodge",
-    "location":"Tsavo",
-    "description":"Lamu Island, which is also a UNESCO World Heritage site",
-    "price": "$2345"
+    "title": "Lorem Ipsum Incident",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageUrl": "https://via.placeholder.com/150"
 }
 
 
-######
-GET http://localhost:4000/hotel/id
 
-
-
-#######
-DELETE http://localhost:4000/hotel/id
 
 ######
-GET http://localhost:4000/Bookings
+GET http://localhost:4000/incidents
 
-#####
-POST http://localhost:4000/Booking
+
+######
+######
+
+POST http://localhost:4000/polls
 
 Content-Type: application/json
 
 {
-    "username":"Gaiman9Shadow",
-    "tour":"Masai Mara",
-    "hotel":"Safari camp",
-    "bookingDate":"13-02-2024",
+    "title": "Sample Poll Title",
+    "question": "Sample Question?",
+    "options": [
+        { "label": "Option 1" },
+        { "label": "Option 2" }
+    ]
 }
 
-######
-GET http://localhost:4000/Booking/Booking/id/632180cd-e88a-4e46-b3fb-dc843cbad09b
 
 ######
-DELETE http://localhost:4000/Booking/localhost:4000/Booking/id/632180cd-e88a-4e46-b3fb-dc843cbad09b
+DELETE http://localhost:4000//polls/:id
 
-######3
+#####
+GET http://localhost:4000/polls
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

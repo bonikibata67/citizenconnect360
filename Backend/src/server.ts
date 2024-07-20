@@ -1,25 +1,26 @@
 import express from 'express';
-import cron from 'node-cron';
-// import { sqlConfig } from "../config/Emailservice";
-// import { run as runEmailService } from './config/Emailservice';
 import cors from 'cors'; 
 import authroutes from './routes/authroutes';
 import { ensureRoles } from './ensureroles';
 import viewsroutes from './routes/viewsroutes';
+import incidentsRouter from './routes/incidentroutes';
+import pollroutes from './routes/pollroutes'
+import bodyParser from 'body-parser';
 
 
 const app = express();
 
 
-// cron.schedule('*/10 * * * * *', async () => {
-//     await runEmailService();
-// });
+
 
 app.use(cors());
 app.use(express.json());
 
+app.use(bodyParser.json());
+app.use('/polls', pollroutes);
 app.use('/auth', authroutes); 
-app.use('/views', viewsroutes); 
+app.use('/views', viewsroutes);
+app.use('/incidents', incidentsRouter); 
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

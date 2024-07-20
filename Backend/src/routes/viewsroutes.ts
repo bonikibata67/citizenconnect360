@@ -1,19 +1,12 @@
-import { Router } from "express";
-import {AddView, ViewsController } from "../controllers/viewscontroller";
-import { verifyToken } from "../middlewares";
-import { ensureRoles } from "../ensureroles";
+import { Router } from 'express';
+import { addView, getViews } from '../controllers/viewscontroller';
 
 
-const viewsController = new ViewsController();
-const viewsroutes = Router();
+const viewsrouter = Router();
 
-viewsroutes.post("/", AddView);
-viewsroutes.get("/", viewsController.getViews);
+viewsrouter.post('/', addView);
+viewsrouter.get('/', getViews);
 
-
-
-
-
-export default viewsroutes;
+export default viewsrouter;
 
 
