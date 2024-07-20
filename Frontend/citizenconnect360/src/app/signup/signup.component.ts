@@ -17,7 +17,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
-export class SignupComponent implements OnInit{
+export class SignupComponent implements OnInit {
   SignUpForm!: FormGroup;
   error!: string;
   message!: string;
@@ -38,7 +38,6 @@ export class SignupComponent implements OnInit{
       this.authService.registerUser(this.SignUpForm.value).subscribe(
         res => {
           if (res.token) {
-            // Navigate based on user role
             if (this.authService.isAdmin()) {
               this.router.navigate(['/admin-dashboard']);
             } else if (this.authService.isGovernment()) {
@@ -54,32 +53,47 @@ export class SignupComponent implements OnInit{
       );
     }
   }
+}
+// export class SignupComponent implements OnInit{
+//   SignUpForm!: FormGroup;
+//   error!: string;
+//   message!: string;
+
+//   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
+
+//   ngOnInit(): void {
+//     this.SignUpForm = this.fb.group({
+//       username: [null, [Validators.required, Validators.minLength(3)]],
+//       email: [null, [Validators.required, Validators.email]],
+//       password: [null, [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)]],
+//       role: ['citizen', Validators.required]
+//     });
+//   }
+
+//   onSubmit() {
+//     if (this.SignUpForm.valid) {
+//       this.authService.registerUser(this.SignUpForm.value).subscribe(
+//         res => {
+//           if (res.token) {
+//             // Navigate based on user role
+//             if (this.authService.isAdmin()) {
+//               this.router.navigate(['/admin-dashboard']);
+//             } else if (this.authService.isGovernment()) {
+//               this.router.navigate(['/government-dashboard']);
+//             } else {
+//               this.router.navigate(['/home']);
+//             }
+//           }
+//         },
+//         err => {
+//           this.error = err?.error?.message || 'Registration failed';
+//         }
+//       );
+//     }
+//   }
  
   
-  // SignUpForm!: FormGroup;
-  // error!: string;
-  // message!: string;
-
-  // constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private store: Store<AppState>) {}
-
-  // ngOnDestroy(): void {}
-
-  // ngOnInit(): void {
-  //   this.SignUpForm = this.fb.group({
-  //     username: [null, [Validators.required, Validators.minLength(3)]],
-  //     email: [null, [Validators.required, Validators.email]],
-  //     password: [null, [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)]], // Minimum six characters, at least one letter and one number
-  //     role: ['citizen', Validators.required] // Default role is citizen
-  //   });
-  // }
-
-  // error$ = this.store.select(errorSelector);
-
-  // onSubmit() {
-  //   if (this.SignUpForm.valid) {
-  //     this.store.dispatch(authactions.register({ user: this.SignUpForm.value }));
-  //   }
-  // }
-};
+  
+// };
 
 

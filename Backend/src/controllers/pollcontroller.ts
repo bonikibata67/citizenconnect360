@@ -31,28 +31,6 @@ export const addPoll = async (req: PollRequest, res: Response) => {
     }
 };
 
-// export const getPolls = async (req: PollRequest, res: Response) => {
-//     try {
-//         // Assuming `GetPolls` returns multiple recordsets in a single result
-//         const result = await dbHelper.exec('GetPolls', {});
-
-//         // Cast recordsets to arrays
-//         const polls = result.recordset as Poll[];
-//         const pollOptions = result.recordset as PollOption[];  // Ensure this is the correct index
-
-//         // Format polls with their options
-//         const formattedPolls = polls.map((poll: Poll) => ({
-//             ...poll,
-//             options: pollOptions.filter((option: PollOption) => option.pollId === poll.id)  // Ensure this matches your data
-//         }));
-
-//         res.status(200).json(formattedPolls);
-//     } catch (error: any) {
-//         console.error('Error fetching polls:', error.message);
-//         res.status(500).json({ error: 'Failed to fetch polls' });
-//     }
-// };
-
 export const getPolls = async (req: PollRequest, res: Response) => {
     try {
         const result = await dbHelper.exec('GetPolls', {});
