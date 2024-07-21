@@ -7,6 +7,7 @@ import { provideHttpClient, withInterceptors, HTTP_INTERCEPTORS} from '@angular/
 import { TokenInterceptor } from './interceptors/token';
 import { AuthGuard } from './guard/auth.guard';
 import routes from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,6 +20,8 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([])),
       { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
     // AuthGuard,
-]};
+]
+// bootstrap: [AppComponent]
+};
 
 // provideRouter(routes)

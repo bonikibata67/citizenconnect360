@@ -1,11 +1,13 @@
 // src/routes/pollRoutes.ts
 import { Router } from 'express';
-import { getPolls,addPoll,deletePoll } from '../controllers/pollcontroller';
-const router = Router();
+import { getPolls,addPoll,deletePoll, updatePoll, votePollOption } from '../controllers/pollcontroller';
+const pollrouter = Router();
 
-router.post('/polls', addPoll);
-router.get('/polls', getPolls);
-router.delete('/polls/:id', deletePoll);
+pollrouter.post('/polls', addPoll);
+pollrouter.get('/polls', getPolls);
+pollrouter.delete('/polls/:id', deletePoll);
+pollrouter.put('/api/polls/:id', updatePoll);
+pollrouter.post('/polls/:pollId/vote', votePollOption);
 
-export default router;
+export default pollrouter;
 

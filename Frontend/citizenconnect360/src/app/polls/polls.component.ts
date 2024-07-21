@@ -1,63 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import { Poll, PollOption } from '../models/polls';
+import { RouterModule } from '@angular/router';
+import { Poll,PollOption } from '../models/polls';
 import { PollService } from '../services/poll.service';
-
 
 @Component({
   selector: 'app-polls',
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './polls.component.html',
-  styleUrl: './polls.component.css'
+  styleUrls: ['./polls.component.css']
 })
-// export class PollsComponent {
-
-// }
-export class PollsComponent implements OnInit{
-  polls: Poll[] = [
-    {
-          title: 'Finance Bill, 2024',
-          question: 'Are Kenyans for or against Finance Bill, 2024?',
-          options: [
-            { label: 'Yes', percentage: 8, votes: 8 },
-            { label: 'No', percentage: 81, votes: 81 },
-            { label: 'Not sure', percentage: 11, votes: 11 }
-          ],
-          totalVotes: 100
-        },
-        {
-          title: 'Car Tax',
-          question: '2.5% car tax?',
-          options: [
-            { label: 'Yes', percentage: 3, votes: 3 },
-            { label: 'No', percentage: 87, votes: 87 },
-            { label: 'Not sure', percentage: 10, votes: 10 }
-          ],
-          totalVotes: 100
-        }
-  ];
+export class PollsComponent implements OnInit {
+  polls: Poll[] = [];
 
   constructor(private pollService: PollService) {}
 
   ngOnInit(): void {
-    this.polls = this.pollService.getPolls();
-    this.pollService.polls$.subscribe(polls => {
-      this.polls = polls;
+    this.pollService.polls$.subscribe({
+      next: (polls: Poll[]) => {
+        this.polls = polls;
+      },
+      error: (err) => {
+        console.error('Failed to fetch polls', err);
+      }
     });
   }
 
-  deletePoll(index: number): void {
-    this.pollService.deletePoll(index);
+  vote(poll: Poll, selectedOption: PollOption): void {
+    if (selectedOption) {
+      this.pollService.vote(poll.id, selectedOption.label).subscribe({
+        next: () => {
+          this.fetchPolls();
+        },
+        error: (err) => {
+          console.error('Failed to vote', err);
+        }
+      });
+    }
   }
 
-  vote(poll: Poll, selectedOption: PollOption): void {
-    selectedOption.votes++;
-    poll.totalVotes++;
-
-    poll.options.forEach(option => {
-      option.percentage = Math.round((option.votes / poll.totalVotes) * 100);
+  deletePoll(pollId: string): void {
+    this.pollService.deletePoll(pollId).subscribe({
+      next: () => {
+        this.polls = this.polls.filter(poll => poll.id !== pollId);
+      },
+      error: (err) => {
+        console.error('Failed to delete poll', err);
+      }
     });
   }
 
@@ -73,5 +63,8 @@ export class PollsComponent implements OnInit{
         return 'gray';
     }
   }
-  
+
+  private fetchPolls(): void {
+    this.pollService.fetchPolls();
+  }
 }

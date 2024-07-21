@@ -19,11 +19,13 @@ export const addIncident = async (req: IncidentRequest, res: Response) => {
     }
 };
 
+
 export const getIncidents = async (req: IncidentRequest, res: Response) => {
     try {
-        const results = await dbHelper.exec('SELECT * FROM Incidents', {});
+        const results = await dbHelper.query('SELECT * FROM Incidents');
         res.status(200).send(results.recordset);
     } catch (error) {
+        console.error('Error fetching incidents:', error);
         res.status(500).send({ error: 'Failed to fetch incidents' });
     }
 };
