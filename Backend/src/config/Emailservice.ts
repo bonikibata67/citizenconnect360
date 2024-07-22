@@ -1,51 +1,48 @@
-import mssql from 'mssql'
-import ejs from 'ejs'
-import { sqlConfig } from '../config'
-import path from 'path'
+import mssql from 'mssql';
+import ejs from 'ejs';
+import { sqlConfig } from '../config';
+import path from 'path';
 import dotenv from 'dotenv';
 import { sendEmail } from '../helpers';
-dotenv.config({path:path.resolve(__dirname,"../../.env")})
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
-
-
- interface User{
-  Id:string,
-  Email:string
-  Name:string
-  Password:string
-  isDeleted:number
-  isEmailSent:number
-  Role:string
+export interface User {
+  Id: string,
+  Username: string,
+  Email: string,
+  Password: string,
+  isDeleted: number,
+  isEmailSent: number,
+  RoleID: number,
 }
 
-export async function run(){
-    try {
-      let pool = await mssql.connect(sqlConfig)
-      let users= (await pool.request().query("SELECT * FROM Users WHERE isEmailSent=0")).recordset as User[]
-      users.forEach(user=>{
+export async function run() {
+  try {
+    const pool = await mssql.connect(sqlConfig);
+    const users = (await pool.request().execute('spGetUsersForEmail')).recordset as User[];
 
-        //build a message option 
-        ejs.renderFile("Templates/register.ejs", {name:user.Name}, async(error,data)=>{
+    for (const user of users) {
+      ejs.renderFile(path.join(__dirname, '../Templates/register.ejs'), { name: user.Username }, async (error, data) => {
+        if (error) {
+          console.error('Error rendering EJS:', error);
+          return;
+        }
 
-          let messageOptions={
-            to:user.Email,
-            from:process.env.EMAIL,
-            subject:"Welcome to EXECUTIVE Tourbooking system",
-            html:data
-          }
+        const messageOptions = {
+          to: user.Email,
+          from: process.env.EMAIL,
+          subject: "Welcome to CITIZENCONNECT360",
+          html: data,
+        };
 
+        await sendEmail(messageOptions);
 
-          await sendEmail(messageOptions)
-
-          await pool.request().query(`UPDATE Users SET isEmailSent=1 WHERE Id='${user.Id}' `)
-        })
-        // send an email 
-
-        // /update
-      })
-      
-
-    } catch (error) {
-        
+        await pool.request()
+          .input('UserId', mssql.NVarChar, user.Id)
+          .execute('spUpdateEmailSentStatus');
+      });
     }
+  } catch (error) {
+    console.error('Error in email service:', error);
+  }
 }
